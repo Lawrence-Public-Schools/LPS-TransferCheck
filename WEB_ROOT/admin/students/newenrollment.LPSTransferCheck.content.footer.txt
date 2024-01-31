@@ -1,0 +1,19 @@
+<div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
+
+</div>
+<!-- use jQuery to replace text -->
+<script type="text/javascript">
+
+    function LPSchecknewenrollment(){
+    let objexitcode = $j("select[name*='exitcode']");
+    let objenrollstatus = $j("select#enrollstatus")
+    }
+
+    function LPSaddHookstonewenrollment(){
+    //$j("button#btnSubmit").hide();
+    
+    }
+
+        $j(document).ready(LPSaddHookstonewenrollment);
+
+</script>
