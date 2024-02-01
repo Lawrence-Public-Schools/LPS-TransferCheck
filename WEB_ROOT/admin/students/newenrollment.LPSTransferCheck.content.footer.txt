@@ -1,19 +1,63 @@
 <div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
-
+   <span id="checkenroll" style="display: none;"> add big letters that pretty much says make sure you go in and update their DOE012 field  </span>
+   <span id="checkDOE12" style="display: none;"> add big letters that pretty much says make sure you go in and update their DOE012 field  </span>
 </div>
 <!-- use jQuery to replace text -->
 <script type="text/javascript">
 
-    function LPSchecknewenrollment(){
+function LPSchecktransferout() {
+    $j("button#btnSubmit").parent().hide();
     let objexitcode = $j("select[name*='exitcode']");
-    let objenrollstatus = $j("select#enrollstatus")
+    let valueexitcode = objexitcode[0].value;
+    let objDOE012 = $j("select#enrollstatus");
+    let valueDOE012 = objDOE012[0].value;
+    let passcheck = true;
+
+    if (valueexitcode !== valueDOE012) {
+        passcheck = false;
     }
 
-    function LPSaddHookstonewenrollment(){
-    //$j("button#btnSubmit").hide();
+    if (valueDOE012 === "40") {
+        passcheck = true;
+    }
+
+    if (valueexitcode === "WL") {
+        passcheck = true;
+    }
+
+    if (valueexitcode === "DUP") {
+        passcheck = true;
+    }
+
+    if (valueexitcode === "T1") {
+        passcheck = true;
+    }
+
+    if (passcheck === true) {
+        $j("button#btnSubmit").parent().show();
+        $j("span#checkenroll").hide();
+        $j("span#checkDOE12").hide();
+    } else {
+        $j("button#btnSubmit").parent().hide();
+        $j("span#checkenroll").show();
+        $j("span#checkDOE12").show();
+    }
+}
+
+function LPSaddHookstotransferout() {
+    $j("select#enrollstatus").after($j("span#checkenroll"));
+    $j("select[name*='exitcode']").after($j("span#checkDOE12"));
+    $j("div#LPS-TransferCheckCustomhiddentable").remove();
+    LPSchecktransferout();
+    $j("select[name*='exitcode']").on( "change", function() {
+      LPSchecktransferout();
+    } );
+    $j("select#enrollstatus").on( "change", function() {
+      LPSchecktransferout();
+    } );
     
-    }
+}
 
-        $j(document).ready(LPSaddHookstonewenrollment);
+$j(document).ready(LPSaddHookstotransferout);
 
 </script>
