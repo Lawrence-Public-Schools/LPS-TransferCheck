@@ -1,6 +1,6 @@
 <div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
-   <span id="checkenroll" style="display: none;"><b style="color: rgb(255, 0, 0);"> make sure you go in and update their DOE012 field </b></span>
-   <span id="checkDOE12" style="display: none;"><b style="color: rgb(255, 0, 0);"> make sure you go in and update their DOE012 field </b></span>
+   <span id="checkenroll" style="display: none;"><b style="color: rgb(255, 0, 0);">Please make sure the exit code and DOE012 match, if you're seeing this then they aren't.</b></span>
+   <span id="checkDOE12" style="display: none;"><b style="color: rgb(255, 0, 0);">Please make sure the exit code and DOE012 match, if you're seeing this then they aren't.</b></span>
 </div>
 <!-- use jQuery to replace text -->
 <script type="text/javascript">

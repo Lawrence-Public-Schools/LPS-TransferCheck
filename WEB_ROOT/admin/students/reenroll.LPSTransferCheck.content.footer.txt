@@ -1,5 +1,5 @@
 <div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
-   <span id="checkDOE12" style="display: none;"> <b style="color: rgb(255, 0, 0);"> make sure you go in and update their DOE012 field </b></span>
+   <span id="checkDOE12" style="display: none;"> <b style="color: rgb(255, 0, 0);">Please make sure DOE012 is valid, if you're seeing this then it isn't.</b></span>
 </div>
 <!-- use jQuery to replace text -->
 <script type="text/javascript">
