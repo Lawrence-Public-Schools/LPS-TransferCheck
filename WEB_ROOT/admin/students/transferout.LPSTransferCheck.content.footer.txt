@@ -1,6 +1,6 @@
 <div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
-   <span id="checkenroll" style="display: none;"> add big letters that pretty much says make sure you go in and update their DOE012 field  </span>
-   <span id="checkDOE12" style="display: none;"> add big letters that pretty much says make sure you go in and update their DOE012 field  </span>
+   <span id="checkenroll" style="display: none;"><b style="color: rgb(255, 0, 0);"> make sure you go in and update their DOE012 field </b></span>
+   <span id="checkDOE12" style="display: none;"><b style="color: rgb(255, 0, 0);"> make sure you go in and update their DOE012 field </b></span>
 </div>
 <!-- use jQuery to replace text -->
 <script type="text/javascript">
