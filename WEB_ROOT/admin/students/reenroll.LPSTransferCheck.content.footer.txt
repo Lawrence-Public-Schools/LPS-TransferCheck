@@ -27,12 +27,25 @@ function LPSchecktransferout() {
     }
 }
 
+function LPSfixtextbox() {
+    let objComment = $j("textarea#fieldEnrollComment");
+    let valueComment = objComment[0].value;
+    valueComment = valueComment.replace(/(?:\r|\n|\r\n)/g, '<br>');
+    valueComment = valueComment.replace(/(?:,)/g, 'comma');
+    valueComment = valueComment.replace(/(?:\t)/g, 'TAB');
+    objComment[0].value = valueComment;
+}
+
 function LPSaddHookstotransferout() {
     $j("select#enrollstatus").after($j("span#checkDOE12"));
     $j("div#LPS-TransferCheckCustomhiddentable").remove();
     LPSchecktransferout();
+    LPSfixtextbox();
     $j("select#enrollstatus").on( "change", function() {
       LPSchecktransferout();
+    } );
+    $j("textarea#fieldEnrollComment").on( "input selectionchange propertychange", function() {
+      LPSfixtextbox();
     } );
     
 }
