@@ -47,9 +47,9 @@ function LPSchecktransferout() {
 function LPSfixtextbox() {
     let objComment = $j("textarea[name*='transfercomment']");
     let valueComment = objComment[0].value;
-    valueComment = valueComment.replace(/(?:\r|\n|\r\n)/g, '<br>');
-    valueComment = valueComment.replace(/(?:,)/g, 'comma');
-    valueComment = valueComment.replace(/(?:\t)/g, 'TAB');
+    valueComment = valueComment.replace(/(?:\r|\n|\r\n)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:,)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:\t)/g, ' ; ');
     objComment[0].value = valueComment;
 }
 
