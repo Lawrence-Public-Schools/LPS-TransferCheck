@@ -1,0 +1,55 @@
+<div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
+   <span id="checkDOE12" style="display: none;"> <b style="color: rgb(255, 0, 0);">Please make sure DOE012 is valid, if you're seeing this then it isn't.</b></span>
+</div>
+<!-- use jQuery to replace text -->
+<script type="text/javascript">
+
+function LPSchecktransferout() {
+    $j("button#btnSubmit").parent().hide();
+    let objDOE012 = $j("select#enrollstatus");
+    let valueDOE012 = objDOE012[0].value;
+    let passcheck = false;
+
+    if (valueDOE012 === "01") {
+        passcheck = true;
+    }
+
+    if (valueDOE012 === "40") {
+        passcheck = true;
+    }
+
+    if (passcheck === true) {
+        $j("button#btnSubmit").parent().show();
+        $j("span#checkDOE12").hide();
+    } else {
+        $j("button#btnSubmit").parent().hide();
+        $j("span#checkDOE12").show();
+    }
+}
+
+function LPSfixtextbox() {
+    let objComment = $j("textarea#fieldEnrollComment");
+    let valueComment = objComment[0].value;
+    valueComment = valueComment.replace(/(?:\r|\n|\r\n)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:,)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:\t)/g, ' ; ');
+    objComment[0].value = valueComment;
+}
+
+function LPSaddHookstotransferout() {
+    $j("select#enrollstatus").after($j("span#checkDOE12"));
+    $j("div#LPS-TransferCheckCustomhiddentable").remove();
+    LPSchecktransferout();
+    LPSfixtextbox();
+    $j("select#enrollstatus").on( "change", function() {
+      LPSchecktransferout();
+    } );
+    $j("textarea#fieldEnrollComment").on( "input selectionchange propertychange", function() {
+      LPSfixtextbox();
+    } );
+    
+}
+
+$j(document).ready(LPSaddHookstotransferout);
+
+</script>

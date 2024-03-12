@@ -1,0 +1,93 @@
+<div id="LPS-TransferCheckCustomhiddentable" style="display: none;">
+   <span id="checkenroll" style="display: none;"><b style="color: rgb(255, 0, 0);">Please make sure the exit code and DOE012 match, if you're seeing this then they aren't.</b></span>
+   <span id="checkDOE12" style="display: none;"><b style="color: rgb(255, 0, 0);">Please make sure the exit code and DOE012 match, if you're seeing this then they aren't.</b></span>
+</div>
+<!-- use jQuery to replace text -->
+<script type="text/javascript">
+
+function LPScheckedittransfer2() {
+    $j("button#btnSubmit").parent().hide();
+    let objexitcode = $j("select#selectExitCode");
+    let valueexitcode = objexitcode[0].value;
+    let objDOE012 = $j("select#MA_EnrollStatus");
+    let valueDOE012 = objDOE012[0].value;
+    let passcheck = true;
+
+    if (valueexitcode !== valueDOE012) {
+        passcheck = false;
+    }
+
+    if (valueDOE012 === "40") {
+        passcheck = true;
+    }
+
+    if (valueexitcode === "WL") {
+        passcheck = true;
+    }
+
+    if (valueexitcode === "DUP") {
+        passcheck = true;
+    }
+
+    if (valueexitcode === "T1") {
+        passcheck = true;
+    }
+    
+    if (valueexitcode === "") {
+        passcheck = true;
+    }
+
+    if (passcheck === true) {
+        $j("button#btnSubmit").parent().show();
+        $j("span#checkenroll").hide();
+        $j("span#checkDOE12").hide();
+    } else {
+        $j("button#btnSubmit").parent().hide();
+        $j("span#checkenroll").show();
+        $j("span#checkDOE12").show();
+    }
+}
+
+function LPSfixtextbox1() {
+    let objComment = $j("textarea#fieldEntryComment");
+    let valueComment = objComment[0].value;
+    valueComment = valueComment.replace(/(?:\r|\n|\r\n)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:,)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:\t)/g, ' ; ');
+    objComment[0].value = valueComment;
+}
+
+function LPSfixtextbox2() {
+    let objComment = $j("textarea#fieldExitComment");
+    let valueComment = objComment[0].value;
+    valueComment = valueComment.replace(/(?:\r|\n|\r\n)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:,)/g, ' ; ');
+    valueComment = valueComment.replace(/(?:\t)/g, ' ; ');
+    objComment[0].value = valueComment;
+}
+
+function LPSaddHookstoedittransfer2() {
+    $j("select#selectExitCode").after($j("span#checkenroll"));
+    $j("select#MA_EnrollStatus").after($j("span#checkDOE12"));
+    $j("div#LPS-TransferCheckCustomhiddentable").remove();
+    LPScheckedittransfer2();
+    LPSfixtextbox1();
+    LPSfixtextbox2();
+    $j("select#selectExitCode").on( "change", function() {
+      LPScheckedittransfer2();
+    } );
+    $j("select#MA_EnrollStatus").on( "change", function() {
+      LPScheckedittransfer2();
+    } );
+    $j("textarea#fieldEntryComment").on( "input selectionchange propertychange", function() {
+      LPSfixtextbox1();
+    } );
+    $j("textarea#fieldExitComment").on( "input selectionchange propertychange", function() {
+      LPSfixtextbox2();
+    } );
+    
+}
+
+$j(document).ready(LPSaddHookstoedittransfer2);
+
+</script>
